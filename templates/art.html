@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koleksi Museum</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Arsip Museum</h1>
+        <p>Menjelajahi jejak sejarah melalui koleksi digital</p>
+    </header>
+
+    <main class="container">
+        <div class="grid">
+            {% for art in all_art %}
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename='image/' + art.id|string + '.jpg') }}" alt="{{ art.name }}">
+                </div>
+                <div class="card-content">
+                    <span class="category">{{ art.artist.name }}</span>
+                    <h3>{{ art.name }}</h3>
+                    <a href="#" class="btn-detail">Lihat Detail</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+</body>
+</html>
+
+{% endblock %}
