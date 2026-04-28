@@ -13,7 +13,7 @@ h1{
     padding: 10px;
     margin: auto;
     overflow: hidden;
-    background-color: #9ecad6;
+    background-color: #BE9FD1;
 }
 
 .navbar a{
@@ -56,9 +56,9 @@ h1{
     margin-bottom: 15px;
 }
 :root {
-    --primary: #2c3e50;
-    --accent: #d4a373;
-    --light: #f8f9fa;
+    --primary: #A7C7E7;
+    --accent: #F2E4E1;
+    --light: #CDB4DB;
     --dark: #1a1a1a;
 }
 
