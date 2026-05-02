@@ -1,48 +1,42 @@
 {% extends "base.html" %}
 
 {% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koleksi Museum</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+<header>
+    <h1>Arsip Museum</h1>
+    <p style="text-align: center; max-width: 600px; margin: 15px auto; padding: 12px 20px; background-color: white; border: 1px solid #e0dcd5; border-radius: 20px; color: #555; font-style: italic;">
+        Sneak peek into our art collection!
+    </p>
+</header>
 
-    <header>
-        <h1>Arsip Museum</h1>
-        <p>Menjelajahi jejak sejarah melalui koleksi digital</p>
-    </header>
-
-    <main class="container">
-        <div class="grid">
-            {% for art in all_art %}
-            <div class="card">
-                <div class="card-image">
-                    <img src="{{ url_for('static', filename='image/' + art.id|string + '.jpg') }}" alt="{{ art.name }}">
-                </div>
-                <div class="card-content">
-                    <span class="category">{{ art.artist.name }}</span>
-                    <h3>{{ art.name }}</h3>
-                    <a href="#" class="btn-detail">Lihat Detail</a>
+<main class="container">
+    <!-- Grid gambar tetap di sini -->
+    <div class="grid">
+        {% for art in all_art %}
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ url_for('static', filename='image/' + art.id|string + '.jpg') }}" alt="{{ art.name }}">
+            </div>
+            <div class="card-content">
+                <span class="category">{{ art.artist.name }}</span>
+                <h3>{{ art.name }}</h3>
+                <p style="font-size: 0.9em; color: #666;">{{ art.description }}</p>
+                
+                <div class="actions" style="margin-top: 10px;">
+                    <a href="{{ url_for('update_art', id=art.id) }}" class="btn-detail" style="background-color: #f0ad4e;">Edit</a>
+                    <a href="{{ url_for('delete_art', id=art.id) }}" class="btn-detail" style="background-color: #d9534f;" onclick="return confirm('Yakin mau hapus?')">Hapus</a>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% else %}
+        <p>Belum ada koleksi seni. Klik "Add New Art" untuk menambah.</p>
+        {% endfor %}
+    </div>
 
-        <main class="container">
-            <a href="/add-art" class="btn-add">+ Add New Art</a>
-        
-            <div class="grid">
-                <!-- isi grid nanti -->
-            </div>
-        </main>
-
-    
-</body>
-</html>
-
+    <!-- SEKARANG TOMBOLNYA DI SINI (DI BAWAH GRID) -->
+    <div style="margin-top: 40px; text-align: center;">
+        <a href="/add-art" class="btn-add">+ Add New Art</a>
+    </div>
+</main>
 {% endblock %}

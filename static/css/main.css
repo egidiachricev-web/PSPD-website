@@ -1,79 +1,45 @@
-body{
-    margin: 0;
-    font-family: Georgia;
-    text-align: justify;
-}
-
-h1{
-    text-align: center;
-}
-
-.navbar ul{
-    list-style-type: none;
-    padding: 10px;
-    margin: auto;
-    overflow: hidden;
-    background-color: #BE9FD1;
-}
-
-.navbar a{
-    text-decoration: none;
-    display: flex;
-    text-align: center;
-    padding: 10px;
-}
-
-.navbar li{
-    float: left;
-}
-
-.home-container{
-    align-items: flex-start;
-    gap: 30px;
-    margin: 20px;
-}
-
-.home-image img{
-    max-width: 900px;
-    height: auto;
-    border-radius: 8px;
-}
-
-.about-container{
-    display: flex;
-    align-items: flex-start;
-    gap: 30px;
-    margin: 20px;
-}
-
-.about-image img{
-    max-width: 400px;
-    height: auto;
-    border-radius: 8px;
-}
-
-.about-text p{
-    margin-bottom: 15px;
-}
+/* --- VARIABLE & RESET --- */
 :root {
-    --primary: #A7C7E7;
-    --accent: #F2E4E1;
-    --light: #CDB4DB;
+    --primary: #2c3e50;
+    --accent: #d4a373;
+    --light: #f9f7f2; /* Warna krem lembut ala museum */
     --dark: #1a1a1a;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--light);
     margin: 0;
+    font-family: 'Georgia', serif; /* Font klasik untuk vibe museum */
+    background-color: var(--light);
     color: var(--dark);
+    text-align: justify;
 }
 
-header {
-    background-color: var(--primary);
-    color: white;
+/* --- NAVIGATION --- */
+.navbar ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+    overflow: hidden;
+    background-color: #9ecad6;
+    display: flex; /* Ganti float ke flex agar lebih modern */
+    justify-content: center;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar a {
+    text-decoration: none;
+    display: block;
+    color: var(--primary);
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/* --- LAYOUT UMUM --- */
+h1 {
     text-align: center;
-    padding: 3rem 1rem;
 }
 
 .container {
@@ -82,6 +48,83 @@ header {
     padding: 0 1rem;
 }
 
+/* --- HOME SECTION --- */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: 20px;
+}
+
+.home-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* --- ABOUT SECTION --- */
+.about-section {
+    padding: 60px 5%;
+}
+
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 20px 20px 0px var(--accent); /* Efek dekoratif kotak di gambar */
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-title {
+    font-size: 70px;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 4px;
+    color: var(--primary);
+    opacity: 0.8;
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.location-sub {
+    text-decoration: underline;
+    color: #777;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.read-more-btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: bold;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 5px;
+}
+
+/* --- CARD / GRID COLLECTIONS --- */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -110,24 +153,6 @@ header {
     padding: 1.5rem;
 }
 
-.category {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: bold;
-}
-
-.card-content h3 {
-    margin: 0.5rem 0;
-    color: var(--primary);
-}
-
-.card-content p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #666;
-}
-
 .btn-detail {
     display: inline-block;
     margin-top: 1rem;
@@ -136,9 +161,101 @@ header {
     color: white;
     text-decoration: none;
     border-radius: 6px;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+    }
+    .about-title {
+        font-size: 50px;
+    }
+
+}
+
+/* --- BUTTONS --- */
+.btn-add {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: white;
+    color: var(--dark);
+    text-decoration: none;
+    border: 2px solid var(--dark);
+    border-radius: 50px; /* Bikin kapsul lucu */
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-add:hover {
+    background-color: var(--dark);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* --- FORM STYLING --- */
+.form-wrapper {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--primary);
     font-size: 0.9rem;
 }
 
-.btn-detail:hover {
-    background-color: var(--accent);
+/* SEMUA INPUT SEKARANG KENA SKINCARE */
+input[type="text"], 
+input[list], /* Ini buat input artist yang model ketik */
+select, 
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Samakan rounded-nya biar senada sama button */
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #fcfcfc;
+}
+
+/* Efek pas diklik biar cantik */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.btn-cancel {
+    text-decoration: none;
+    color: #888;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.btn-cancel:hover {
+    color: #d9534f;
 }

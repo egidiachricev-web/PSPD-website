@@ -1,5 +1,32 @@
-<form method="POST">
-    <input type="text" name="name" placeholder="Nama Karya Seni">
-    <input type="number" name="artist_id" placeholder="ID Artist">
-    <button type="submit">Add New Art</button>
-</form>
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+    <div class="form-wrapper">
+        <h2>Tambah Koleksi Seni Baru</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label>Art Name</label>
+                <input type="text" name="name" placeholder="Example: The Starry Night" required>
+            </div>
+
+            <!-- BAGIAN PILIH ARTIST (MODEL KETIK) -->
+            <div class="form-group">
+                <label>Artist Name</label>
+                <input list="artist-list" name="artist_name" placeholder="Example: Vincent van Gogh" required>
+                <datalist id="artist-list">
+                </datalist>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" rows="5" placeholder="Example: A beautiful night sky with swirling clouds..."></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-add">Add New Art</button>
+                <a href="{{ url_for('art') }}" class="btn-cancel">Batal</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
