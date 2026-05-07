@@ -3,7 +3,8 @@
 <div class="container">
     <div class="form-wrapper">
         <h2>Tambah Koleksi Seni Baru</h2>
-        <form method="POST">
+        <!-- 1. DITAMBAH enctype supaya bisa kirim file gambar -->
+        <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Art Name</label>
                 <input type="text" name="name" placeholder="Example: The Starry Night" required>
@@ -14,7 +15,18 @@
                 <label>Artist Name</label>
                 <input list="artist-list" name="artist_name" placeholder="Example: Vincent van Gogh" required>
                 <datalist id="artist-list">
+                    <!-- 2. DITAMBAH loop supaya nama artist muncul otomatis -->
+                    {% for artist in artists %}
+                    <option value="{{ artist.name }}">
+                    {% endfor %}
                 </datalist>
+            </div>
+
+            <!-- 3. BAGIAN BARU: INPUT GAMBAR -->
+            <div class="form-group">
+                <label>Upload Picture</label>
+                <input type="file" name="picture" accept="image/*" required>
+                <small style="color: gray; display: block;">Accepted formats: JPG, PNG, JPEG</small>
             </div>
 
             <div class="form-group">

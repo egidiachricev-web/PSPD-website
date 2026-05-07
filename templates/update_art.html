@@ -5,8 +5,8 @@
     <div class="form-wrapper">
         <h2>Edit Koleksi Seni</h2>
         
-        <!-- Action-nya mengarah ke ID art yang sedang diedit -->
-        <form method="POST">
+        <!-- TAMBAHKAN enctype="multipart/form-data" -->
+        <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Nama Karya Seni</label>
                 <input type="text" name="name" value="{{ art.name }}" required>
@@ -14,13 +14,21 @@
 
             <div class="form-group">
                 <label>Nama Artist (Ketik nama untuk mencari)</label>
-                <!-- Kita pakai value="{{ art.artist.name }}" supaya nama artist lamanya muncul otomatis -->
                 <input list="artist-list" name="artist_name" value="{{ art.artist.name }}" placeholder="Cari nama artist..." required>
                 <datalist id="artist-list">
                     {% for artist in artists %}
                     <option value="{{ artist.name }}">
                     {% endfor %}
                 </datalist>
+            </div>
+
+            <!-- INPUT BARU: Kolom Pilih File Gambar -->
+            <div class="form-group">
+                <label>Ubah Gambar Karya (Kosongkan jika tidak ingin ganti)</label>
+                <input type="file" name="image" accept="image/*">
+                {% if art.image_url %}
+                    <p style="font-size: 0.8rem; color: #666;">Gambar saat ini: {{ art.image_url.split('/')[-1] }}</p>
+                {% endif %}
             </div>
 
             <div class="form-group">
