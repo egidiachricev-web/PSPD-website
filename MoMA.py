@@ -1,10 +1,20 @@
 from flask import Flask, render_template, request, redirect, url_for
-from models import db, Art, Artist
+from models import db, Art, Artist, Comment, User 
 from werkzeug.utils import secure_filename
 import os
+from flask_login import LoginManager, current_user  
+
 
 app = Flask(__name__)
 app.secret_key = 'kunci_rahasia_moma'
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'moma.db')
@@ -48,8 +58,8 @@ def add_art():
         
         # Logika Upload Gambar
         image_url = '' 
-        if 'image' in request.files:
-            file = request.files['image']
+        if 'picture' in request.files:  # Ganti 'image' jadi 'picture'
+            file = request.files['picture'] # Ganti 'image' jadi 'picture'
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -77,8 +87,8 @@ def update_art(id):
         art_item.description = request.form.get('description', '')
         
         # Logika Update Gambar (Opsional)
-        if 'image' in request.files:
-            file = request.files['image']
+        if 'picture' in request.files:  # Ganti 'image' jadi 'picture'
+            file = request.files['picture'] # Ganti 'image' jadi 'picture'
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -109,6 +119,23 @@ def delete_art(id):
     db.session.delete(art_item)
     db.session.commit()
     return redirect(url_for('art'))
+
+@app.route('/add-comment/<int:art_id>', methods=['POST'])
+def add_comment(art_id):
+    content = request.form.get('content')
+    if content:
+        new_comment = Comment(content=content, art_id=art_id)
+        db.session.add(new_comment)
+        db.session.commit()
+    return redirect(url_for('art')) # Balik ke halaman galeri
+
+@app.route('/login')
+def login():
+    return "Login Here"
+
+@app.route('/register')
+def register():
+    return "Sign in Here"
 
 if __name__ == "__main__":
     app.run(debug=True)

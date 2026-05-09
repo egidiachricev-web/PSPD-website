@@ -11,7 +11,6 @@
 </header>
 
 <main class="container">
-    <!-- Grid gambar tetap di sini -->
     <div class="grid">
         {% for art in all_art %}
         <div class="card">
@@ -27,14 +26,33 @@
                     <a href="{{ url_for('update_art', id=art.id) }}" class="btn-detail" style="background-color: #f0ad4e;">Edit</a>
                     <a href="{{ url_for('delete_art', id=art.id) }}" class="btn-detail" style="background-color: #d9534f;" onclick="return confirm('Yakin mau hapus?')">Hapus</a>
                 </div>
-            </div>
+
+                <div class="comment-section" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+                    <h6>Reviews:</h6>
+                    <ul style="list-style: none; padding: 0; font-size: 0.85em;">
+                        {% for comment in art.comments %}
+                            <li style="background: #f9f9f9; padding: 8px; border-radius: 5px; margin-bottom: 5px;">
+                                "{{ comment.content }}" <br>
+                                <small style="color: #888;">{{ comment.timestamp.strftime('%d %b %Y') }}</small>
+                            </li>
+                        {% else %}
+                            <li style="color: #aaa; font-style: italic;">Belum ada review.</li>
+                        {% endfor %}
+                    </ul>
+
+                    <form action="{{ url_for('add_comment', art_id=art.id) }}" method="POST" style="margin-top: 10px; display: flex; gap: 5px;">
+                        <input type="text" name="content" placeholder="Tulis review..." required 
+                               style="flex-grow: 1; padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
+                        <button type="submit" style="padding: 5px 10px; cursor: pointer; background: #005088; color: white; border: none; border-radius: 4px;">Kirim</button>
+                    </form>
+                </div>
+                </div>
         </div>
         {% else %}
         <p>Belum ada koleksi seni. Klik "Add New Art" untuk menambah.</p>
         {% endfor %}
     </div>
 
-    <!-- SEKARANG TOMBOLNYA DI SINI (DI BAWAH GRID) -->
     <div style="margin-top: 40px; text-align: center;">
         <a href="/add-art" class="btn-add">+ Add New Art</a>
     </div>
