@@ -8,10 +8,41 @@
 <div class="home-container">
     <h1><u>MoMA: The Museum of Modern Art</u></h1>
 
-    <div class="home-image">
-        <img src="{{ url_for ('static', filename='css/image/MOMAIMG.jpg')}}" alt="MOMA" width="900px">
+    <div class="container-info">
+        <div class="card">
+            <img src="{{ url_for ('static', filename='image/MOMAIMG.jpg')}}" alt="MOMA" width="900px">
+            </div>
+            
+            <div class="card">
+               <img src="{{ url_for ('static', filename='image/4.jpeg')}}" alt="MOMA" width="900px"> 
+              </div>
+            
+              <div class="card">
+            <img src="{{ url_for ('static', filename='image/7.jpg')}}" alt="MOMA" width="900px">
+              </div>
+            
+            <div class="card">
+            <img src="{{ url_for ('static', filename='image/8.jpg')}}" alt="MOMA" width="900px">
+              </div>
+            </div>
+            </div>
     </div>
-
+    <div class="container-info">
+        <div class="card">
+          <h3>Location</h3>
+          <p>11 W 53rd St, New York, NY</p>
+        </div>
+      
+        <div class="card">
+          <h3>Opening Hours</h3>
+          <p>10:00 AM - 5:30 PM</p>
+        </div>
+      
+        <div class="card">
+          <h3>Tickets</h3>
+          <p>Adult: $25 | Student: $14</p>
+        </div>
+      </div>
 </div>
 {% endblock %}
 

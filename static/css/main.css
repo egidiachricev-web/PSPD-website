@@ -2,7 +2,7 @@
 :root {
     --primary: #2c3e50;
     --accent: #d4a373;
-    --light: #f9f7f2; /* Warna krem lembut ala museum */
+    --light: #E0DEDE; /* Warna krem lembut ala museum */
     --dark: #1a1a1a;
 }
 
@@ -145,7 +145,7 @@ h1 {
 
 .card-image img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -191,7 +191,7 @@ h1 {
 
 .btn-add:hover {
     background-color: var(--dark);
-    color: white;
+    color: #D1C4E9;
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
@@ -258,4 +258,229 @@ input:focus, select:focus, textarea:focus {
 
 .btn-cancel:hover {
     color: #d9534f;
+}
+.nav-search {
+    display: inline-block;
+    margin-left: 25px;
+    vertical-align: middle;
+}
+
+.nav-search input {
+    width: 260px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    font-size: 14px;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.breadcrumbs {
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #777;
+    font-family: Arial, sans-serif;
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+    color: #2c6e49;
+    font-weight: 600;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs span {
+    color: #999;
+    margin-left: 5px;
+}
+.visiting-info {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f8f8f8;
+}
+
+.visiting-info h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #2c6e49;
+}
+
+.info-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.info-card {
+    background: white;
+    padding: 25px;
+    width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.info-card h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+.container-info {
+    display: flex;            /* Mengaktifkan mode sejajar */
+    justify-content: center;  /* Membuat kartu berada di tengah secara horizontal */
+    gap: 20px;               /* Memberi jarak antar kartu */
+    flex-wrap: wrap;         /* Agar tetap rapi jika dibuka di HP (otomatis turun) */
+    padding: 20px;
+  }
+  
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;            /* Atur lebar kartu agar seragam */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  .card {
+    /* Ganti angka di bawah sesuai keinginanmu */
+    width: 450px; 
+    /* Atau gunakan persentase agar adaptif */
+    max-width: 20%; 
+    
+    /* Tambahan agar gambar di dalamnya ikut mengecil */
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%; /* Menjaga aspek rasio agar tidak penyet */
+    display: block;
+}
+/* Pastikan body tidak punya jarak bawaan */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Memisahkan menu di kiri dan tombol di kanan */
+    align-items: center;
+    
+    /* KUNCI AGAR NYAMBUNG: */
+    width: 100%;           /* Lebar penuh */
+    margin: 0;             /* Hilangkan margin luar */
+    padding: 10px 20px;    /* Padding dalam saja agar teks tidak nempel tembok */
+    
+    background-color: #add8e6; /* Warna biru muda sesuai gambarmu */
+    
+    /* Menghilangkan border-radius jika ada agar tidak melengkung di ujung layar */
+    border-radius: 0; 
+    
+    /* Memastikan navbar tetap di atas saat di-scroll (opsional) */
+    position: relative; 
+    box-sizing: border-box; /* Agar padding tidak menambah lebar 100% tadi */
+}
+
+/* Gaya untuk link di dalam navbar */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+/* --- PERBAIKAN KARTU ARSIP --- */
+.grid {
+    display: flex;            /* Mengaktifkan flexbox agar sejajar ke samping */
+    justify-content: center;  /* Memposisikan kartu di tengah */
+    gap: 25px;               /* Memberi jarak antar kartu */
+    flex-wrap: wrap;         /* Agar kartu otomatis turun jika layar sempit */
+    padding: 20px;
+}
+
+.card-college {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;            /* Lebar ideal agar teks tidak terlalu sempit */
+    text-align: left;        /* Teks rata kiri agar lebih rapi untuk deskripsi */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;           /* Memberikan tinggi gambar yang seragam */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* Gambar tetap bagus meskipun ukurannya dipaksa sama */
+}
+
+.card-content h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.card-content p {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.4;        /* Memberi jarak antar baris teks agar enak dibaca */
+}
+/* --- PERBAIKAN NAVBAR SERAGAM --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
+    
+    /* WARNA KUNCI: Gunakan kode warna ini agar sama persis */
+    background-color: #9ecad6; 
+    
+    border-radius: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Pastikan ul di dalam navbar tidak punya background sendiri yang beda */
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent; /* Ubah ke transparan agar ikut warna induknya */
+    display: flex;
+    justify-content: center;
+}
+
+/* Gaya teks link agar konsisten */
+.navbar a {
+    text-decoration: none;
+    color: #2c3e50; /* Warna teks utama */
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/* Tombol Login/Register agar tetap rapi di kanan */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
 }

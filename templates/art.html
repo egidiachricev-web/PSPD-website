@@ -3,6 +3,13 @@
 {% block body %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
+<div class="breadcrumbs">
+    <a href="/">Home</a> 
+    <a href="/art">About </a>
+    <a href="/art">Art </a>
+    <a href="/art">Exhibition </a>
+     <a href="/art">Visiting Info </a>
+</div>
 <header>
     <h1>Arsip Museum</h1>
     <p style="text-align: center; max-width: 600px; margin: 15px auto; padding: 12px 20px; background-color: white; border: 1px solid #e0dcd5; border-radius: 20px; color: #555; font-style: italic;">
@@ -11,9 +18,12 @@
 </header>
 
 <main class="container">
+    <div class="search-container">
+        <input type="text" id="searchArt" placeholder="Cari karya seni..." onkeyup="searchArt()">
+    </div>
     <div class="grid">
         {% for art in all_art %}
-        <div class="card">
+        <div class="card-college">
             <div class="card-image">
                 <img src="{{ url_for('static', filename='image/' + art.id|string + '.jpg') }}" alt="{{ art.name }}">
             </div>
@@ -57,4 +67,20 @@
         <a href="/add-art" class="btn-add">Add New Art</a>
     </div>
 </main>
+<script>
+    function searchArt() {
+        let input = document.getElementById("searchArt").value.toLowerCase();
+        let cards = document.querySelectorAll(".card");
+    
+        cards.forEach(function(card) {
+            let title = card.querySelector("h3").innerText.toLowerCase();
+    
+            if (title.includes(input)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+    </script>
 {% endblock %}
