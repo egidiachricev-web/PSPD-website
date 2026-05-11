@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< Updated upstream
     <title>MoMA - Museum of Modern Art</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     {% block head %}{% endblock %}
+=======
+    <title>Museum Archive</title>
+    <!-- CSS Utama -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+>>>>>>> Stashed changes
 </head>
 <<<<<<< HEAD
 <body>
+<<<<<<< Updated upstream
     <nav class="navbar">
         <div class="nav-left">
             <ul class="nav-links">
@@ -71,5 +78,21 @@
 
     {% block body %} {% endblock %}
 >>>>>>> dd81285ce7fef33140015de573bca64253c33d47
+=======
+    <header>
+        <nav>
+            <a href="/">About</a>
+            <a href="/art">Art</a>
+            <a href="/artist">Artist</a>
+            <a href="/exhibition">Exhibition</a>
+            <a href="/visiting">Visiting Info</a>
+            <a href="/scan">Scan</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Konten dari file lain (about.html, art.html, dll) akan muncul di sini -->
+    {% block body %}{% endblock %}
+>>>>>>> Stashed changes
 </body>
 </html>

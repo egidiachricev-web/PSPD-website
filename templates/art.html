@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {% extends "base.html" %}
 {% block content %}
 <div class="breadcrumbs">
@@ -39,6 +40,16 @@
         Arsip Museum
     </h1>
     <p style="text-align: center; color: #888; font-style: italic; font-family: 'Georgia', serif; margin-bottom: 50px;">
+=======
+{% extends "art.html" %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<header>
+    <h1>Arsip Museum</h1>
+    <p style="text-align: center; max-width: 600px; margin: 15px auto; padding: 12px 20px; background-color: white; border: 1px solid #d0dcd5; border-radius: 20px; color: #555; font-style: italic;">
+>>>>>>> Stashed changes
         Sneak peek into our art collection!
     </p>
 </header>
@@ -52,6 +63,7 @@
                alt="{{ art.name }}" 
                style="width: 100%; height: 200px; object-fit: cover; display: block;">
             </div>
+<<<<<<< Updated upstream
             
             <div class="card-content">
                 <span class="category" style="color: var(--accent); font-weight: bold;">{{ art.artist.name }}</span>
@@ -160,3 +172,9 @@ function searchArt() {
 {% endblock %}
 </script>
 {% endblock %}
+=======
+
+            <div class="card-content">
+                <span class="category">{{ art.artist.name }}</span>
+                <h3>{{ art.name }}</h3>
+>>>>>>> Stashed changes

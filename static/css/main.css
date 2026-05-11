@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 :root {
     --primary: #2c3e50;
@@ -38,8 +39,12 @@ body { margin: 0; font-family: 'Georgia', serif; background-color: var(--light);
 
 * { box-sizing: border-box; }
 
+=======
+>>>>>>> Stashed changes
 body {
+    background-color: #f8f5f0;
     margin: 0;
+<<<<<<< Updated upstream
     padding: 0;
     font-family: 'Georgia', serif;
     background-color: var(--bg-body);
@@ -171,3 +176,313 @@ body {
 
 .btn-cancel { text-decoration: none; color: #888; font-size: 0.9rem; margin-left: 15px; }
 >>>>>>> dd81285ce7fef33140015de573bca64253c33d47
+=======
+    font-family: 'Serif', sans-serif;
+}
+
+/* Navigasi Atas */
+header {
+    background-color: #8fb4bc;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Kontainer Utama */
+.about-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 60px auto;
+    gap: 50px;
+    padding: 0 40px;
+    align-items: flex-start;
+}
+
+/* Judul ABOUT Besar */
+.about-title {
+    font-size: 90px;
+    color: #5b6d7a;
+    margin: 0;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.about-subtitle {
+    font-size: 32px;
+    margin: 10px 0;
+    color: #1a1a1a;
+}
+
+/* Gambar dengan efek bayangan kotak coklat */
+.about-image {
+    position: relative;
+}
+
+.about-image img {
+    width: 480px;
+    position: relative;
+    z-index: 2;
+}
+
+.about-image::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #e6b89c;
+    top: 30px;
+    left: 30px;
+    z-index: 1;
+}
+
+/* Gambar bawah */
+.about-extra-image img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.location-sub {
+    color: #888;
+    text-decoration: underline;
+}
+/* --- TAMPILAN HEADER & NAVIGASI --- */
+header {
+    background-color: #8fb4bc; /* Warna biru pastel sesuai gambar */
+    padding: 20px;
+    text-align: center;
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* --- TATA LETAK GRID (3 KOLOM) --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom sama rata */
+    gap: 30px; /* Jarak antar kartu */
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* --- DESAIN KARTU (CARD) --- */
+.card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Bayangan halus */
+    overflow: hidden; /* Supaya gambar tidak keluar dari border-radius */
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- MENGATUR GAMBAR AGAR TIDAK RAKSASA --- */
+.card-image img {
+    width: 100%;
+    height: 200px; /* Tinggi gambar seragam */
+    object-fit: cover; /* Gambar terpotong rapi, tidak gepeng */
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+/* --- TOMBOL EDIT & HAPUS --- */
+.btn-edit {
+    background-color: #f0ad4e;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.btn-delete {
+    background-color: #d9534f;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+/* Container Utama About */
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 60px;
+    padding: 80px 10%;
+    background-color: #f8f5f0; /* Warna krem latar belakang */
+}
+
+/* Pengaturan Gambar Kiri & Efek Kotak Cokelat */
+.about-image-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.main-about-img {
+    width: 450px;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    display: block;
+}
+
+.orange-box {
+    position: absolute;
+    width: 450px;
+    height: 100%;
+    background-color: #e6b89c; /* Warna kotak cokelat/oranye */
+    top: 30px;
+    left: 30px;
+    z-index: 1;
+}
+
+/* Bagian Teks (Kanan) */
+.about-content {
+    max-width: 500px;
+}
+
+.about-title {
+    font-size: 100px; /* Ukuran sangat besar */
+    font-weight: bold;
+    color: #5b6d7a; /* Warna abu-abu kebiruan */
+    margin: 0;
+    line-height: 0.8;
+}
+
+.about-subtitle {
+    font-size: 32px;
+    margin: 20px 0 10px 0;
+    color: #1a1a1a;
+}
+
+.location-link {
+    color: #888;
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+.about-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Gambar Kecil di Bawah Deskripsi */
+.about-secondary-image img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 30px;
+    display: block;
+}
+/* Menghilangkan garis bawah dan memberi bentuk kotak */
+.btn-edit, .btn-delete {
+    display: inline-block;    /* Agar padding berfungsi */
+    padding: 8px 20px;        /* Memberi ruang di dalam tombol */
+    border-radius: 5px;       /* Membuat sudut tombol melengkung */
+    text-decoration: none;    /* Menghapus garis bawah biru standar link */
+    font-weight: bold;
+    color: white !important;  /* Memaksa warna teks jadi putih */
+    border: none;
+}
+
+/* Warna Oranye untuk Tombol Edit */
+.btn-edit {
+    background-color: #f0ad4e;
+}
+
+/* Warna Merah untuk Tombol Hapus */
+.btn-delete {
+    background-color: #d9534f;
+}
+/* Container Utama About */
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 60px;
+    padding: 80px 10%;
+    background-color: #f8f5f0; /* Warna krem latar belakang */
+}
+
+/* Pengaturan Gambar Kiri & Efek Kotak Cokelat */
+.about-image-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.main-about-img {
+    width: 450px;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    display: block;
+}
+
+.orange-box {
+    position: absolute;
+    width: 450px;
+    height: 100%;
+    background-color: #e6b89c; /* Warna kotak cokelat/oranye */
+    top: 30px;
+    left: 30px;
+    z-index: 1;
+}
+
+/* Bagian Teks (Kanan) */
+.about-content {
+    max-width: 500px;
+}
+
+.about-title {
+    font-size: 100px; /* Ukuran sangat besar */
+    font-weight: bold;
+    color: #5b6d7a; /* Warna abu-abu kebiruan */
+    margin: 0;
+    line-height: 0.8;
+}
+
+.about-subtitle {
+    font-size: 32px;
+    margin: 20px 0 10px 0;
+    color: #1a1a1a;
+}
+
+.location-link {
+    color: #888;
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+.about-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Gambar Kecil di Bawah Deskripsi */
+.about-secondary-image img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 30px;
+    display: block;
+}
+>>>>>>> Stashed changes
