@@ -1,8 +1,15 @@
+
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, current_user, login_user, logout_user, login_required
+from flask import flash, abort
+from functools import wraps
+
 from flask import Flask, render_template, request, redirect, url_for
 from models import db, Art, Artist, Comment, User 
 from werkzeug.utils import secure_filename
 import os
 from flask_login import LoginManager, current_user  
+
 
 
 app = Flask(__name__)
@@ -15,6 +22,16 @@ login_manager.login_view = 'login'
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+# Decorator khusus untuk mengecek apakah user adalah admin
+def admin_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        # Jika belum login atau role-nya BUKAN admin, tolak akses (403 Forbidden)
+        if not current_user.is_authenticated or current_user.role != 'admin':
+            abort(403) 
+        return f(*args, **kwargs)
+    return decorated_function
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'moma.db')
@@ -50,6 +67,8 @@ def art():
     return render_template('art.html', all_art=all_art)
 
 @app.route('/add-art', methods=['GET', 'POST'])
+@login_required
+@admin_required
 def add_art():
     if request.method == 'POST':
         name = request.form['name']
@@ -79,6 +98,8 @@ def add_art():
     return render_template('add_art.html', artists=artists)
 
 @app.route('/update-art/<int:id>', methods=['GET', 'POST'])
+@login_required
+@admin_required
 def update_art(id):
     art_item = Art.query.get_or_404(id)
     
@@ -108,6 +129,8 @@ def update_art(id):
     return render_template('update_art.html', art=art_item, artists=artists)
 
 @app.route('/delete-art/<int:id>')
+@login_required
+@admin_required
 def delete_art(id):
     art_item = Art.query.get_or_404(id)
     # Hapus file gambar dari folder jika ada (opsional tapi bagus biar nggak nyampah)
@@ -121,6 +144,7 @@ def delete_art(id):
     return redirect(url_for('art'))
 
 @app.route('/add-comment/<int:art_id>', methods=['POST'])
+@login_required
 def add_comment(art_id):
     content = request.form.get('content')
     if content:
@@ -129,12 +153,57 @@ def add_comment(art_id):
         db.session.commit()
     return redirect(url_for('art')) # Balik ke halaman galeri
 
-@app.route('/login')
-def login():
-    return "Login Here"
-
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    return "Sign in Here"
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        # Cek apakah username sudah ada di database
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            flash("Username sudah digunakan. Silakan gunakan yang lain.")
+            return redirect(url_for('register'))
+            
+        # Hash password sebelum disimpan ke database
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+        
+        # Buat user baru (role otomatis 'user' sesuai default di models.py)
+        new_user = User(username=username, password=hashed_password)
+        db.session.add(new_user)
+        db.session.commit()
+        
+        flash("Registrasi berhasil! Silakan login.")
+        return redirect(url_for('login'))
+        
+    return render_template('register.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        # Cari user berdasarkan username
+        user = User.query.filter_by(username=username).first()
+        
+        # Jika user ada dan password hash-nya cocok
+        if user and check_password_hash(user.password, password):
+            login_user(user) # Buat sesi login
+            return redirect(url_for('index'))
+        else:
+            flash("Username atau password salah!")
+            return redirect(url_for('login'))
+            
+    return render_template('login.html')
+
+
+# Tambahkan route logout
+@app.route('/logout')
+@login_required # Hanya user yang login yang bisa logout
+def logout():
+    logout_user() # Hapus sesi
+    return redirect(url_for('index'))
 
     app.run(debug=True)

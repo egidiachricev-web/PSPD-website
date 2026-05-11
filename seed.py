@@ -1,12 +1,23 @@
 from MoMA import app 
 from models import db, Artist, Art
 
+from werkzeug.security import generate_password_hash
+from models import User 
+
 def isi_database():
     with app.app_context():
+        print("Membuat akun admin default...")
+        User.query.delete() # Hapus user lama jika mau reset
+        admin_password = generate_password_hash("admin123", method='pbkdf2:sha256')
+        admin_user = User(username="admin", password=admin_password, role="admin")
+        db.session.add(admin_user)
+        db.session.commit()
+        print("Akun Admin berhasil dibuat! (Username: admin | Password: admin123)")
         print("Sedang membersihkan data lama...")
         # Menghapus data art dan artist agar tidak double
         Art.query.delete()
         Artist.query.delete()
+        
         db.session.commit()
 
         # Daftar data yang rapi dan namanya tidak kepanjangan
