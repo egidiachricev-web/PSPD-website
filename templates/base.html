@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     {% block head %}{% endblock %}
 </head>
+<<<<<<< HEAD
 <body>
     <nav class="navbar">
         <div class="nav-left">
@@ -32,5 +33,43 @@
     <main>
         {% block content %}{% endblock %}
     </main>
+=======
+<body style="margin: 0; background-color: #fdfdfd;">
+<nav class="navbar">
+    <a href="{{ url_for('index') }}" class="logo">MOMA</a>
+
+    <div class="nav-center">
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('art') }}">Art</a></li>
+            <li><a href="{{ url_for('exhibition') }}">Exhibition</a></li>
+            <li><a href="#">Artist</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+    </div>
+
+    <div class="nav-auth-container">
+        <ul class="nav-auth">
+            {% if current_user.is_authenticated %}
+                <li class="user-greet">Hi, <strong>{{ current_user.username }}</strong></li>
+                <li><a href="{{ url_for('logout') }}" class="logout-link">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}" class="login-link">Login</a></li>
+                <li><a href="{{ url_for('register') }}" class="btn-register">Sign in</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<div class="breadcrumbs" style="text-align: center; margin: 20px auto; font-size: 0.85rem; font-family: sans-serif;">
+    <a href="{{ url_for('index') }}" style="text-decoration: none; color: #d4a373; font-weight: bold;">Home</a>
+    {% block breadcrumbs %}{% endblock %}
+</div>
+
+    {% block body %} {% endblock %}
+>>>>>>> dd81285ce7fef33140015de573bca64253c33d47
 </body>
 </html>

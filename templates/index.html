@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+<<<<<<< HEAD
 {% block content %}
 <div class="container home-container">
     <h1 class="about-title"><u>MoMA: The Museum of Modern Art</u></h1>
@@ -10,5 +11,92 @@
             </div>
         </div>
         </div>
+=======
+{% block body %}
+<div class="home-container">
+    <h1 style="text-align: center; margin-bottom: 50px; font-family: 'Georgia', serif; font-weight: 300; letter-spacing: 12px; text-transform: uppercase; color: #333; font-size: 1.8rem;">
+        The Museum of Modern Art
+    </h1>
+
+    <section style="display: flex; gap: 60px; align-items: flex-start; padding: 60px 0; max-width: 1000px; margin: 0 auto;">
+        <div style="flex: 1;">
+            <h2 style="font-family: 'Georgia', serif; font-weight: 400; font-size: 1.5rem; letter-spacing: 8px; color: #333; text-transform: uppercase; margin: 0; text-align: left;">
+                welcome
+            </h2>
+            
+            <p style="font-family: 'Georgia', serif; font-size: 0.95rem; line-height: 1.8; color: #555; margin-top: 20px; text-align: justify; letter-spacing: 0.5px;">
+                MoMA - space that unites creativity. Our gallery specializes in master painters. 
+                Visual history through centuries of masterpieces, bringing art closer to your soul.
+            </p>
+
+            <div style="margin-top: 40px; position: relative;">
+                <section style="display: flex; gap: 60px; align-items: center; padding: 80px 5%; max-width: 1200px; margin: 0 auto;">
+    
+    <div style="flex: 1.2; position: relative;">
+        <img src="{{ url_for('static', filename='image/MOMA4.jpg') }}" 
+             alt="MOMA Inside" 
+             style="width: 100%; height: 450px; object-fit: cover; border-radius: 8px; box-shadow: 15px 15px 0px #d4a373;"> <div style="position: absolute; bottom: -20px; right: -30px; background: white; padding: 20px; border: 1px solid #eee; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 250px;">
+            <p style="font-family: 'Georgia', serif; font-size: 0.75rem; color: #888; margin: 0; font-style: italic; line-height: 1.5;">
+                "Art is the only way to run away without leaving home."
+            </p>
+        </div>
+    </div>
+
+    <div style="flex: 1;">
+        <div style="margin-bottom: 50px;">
+            <h3 style="font-size: 4rem; font-family: 'Georgia', serif; opacity: 0.15; color: #2c3e50; margin: 0; font-weight: 300;">Time</h3>
+            <h3 style="font-size: 3.5rem; font-family: 'Georgia', serif; font-weight: bold; margin: -25px 0 0 40px; color: #2c3e50; letter-spacing: 12px; text-transform: uppercase;">Visit</h3>
+        </div>
+
+        <div class="schedule-container" style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="card" style="border-radius: 15px; background: white; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <h4 style="font-family: 'Georgia', serif; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: #333; text-align: center;">Weekdays</h4>
+                <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 10px;">Tuesday - Friday</p>
+                <p style="font-size: 0.9rem; color: #666; text-align: center; font-weight: bold;">09:00 AM - 5:30 PM</p>
+            </div>
+            
+            <div class="card" style="border-radius: 15px; background: white; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <h4 style="font-family: 'Georgia', serif; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: #333; text-align: center;">Weekends</h4>
+                <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 10px;">Saturday</p>
+                <p style="font-size: 0.9rem; color: #666; text-align: center; font-weight: bold;">10:00 AM - 5:30 PM</p>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+
+        <div style="flex: 1.2; position: relative;">
+            <img src="{{ url_for('static', filename='image/MOMAIMG.jpg') }}" style="width: 100%; border-radius: 5px; box-shadow: 10px 10px 0px #d4a373;">
+            <div style="position: absolute; bottom: -15px; left: -30px; background: white; padding: 20px; border: 1px solid #eee; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 250px;">
+                <p style="font-family: 'Georgia', serif; font-size: 0.75rem; color: #888; margin: 0; font-style: italic; line-height: 1.6;">"Art is the only way to run away without leaving home."</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 80px 0; text-align: center; border-top: 1px solid #eee; margin-top: 40px;">
+        <h2 style="font-family: 'Georgia', serif; font-weight: 400; font-size: 1.5rem; letter-spacing: 8px; color: #333; text-transform: uppercase; margin-bottom: 40px;">
+            the collection
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 160px); gap: 30px; justify-content: center;">
+            <div style="text-align: center;">
+                <div style="padding: 10px; background: white; border: 1px solid #ddd; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <img src="{{ url_for('static', filename='image/1.jpg') }}" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div style="padding: 10px; background: white; border: 1px solid #ddd; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <img src="{{ url_for('static', filename='image/2.jpg') }}" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div style="padding: 10px; background: white; border: 1px solid #ddd; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <img src="{{ url_for('static', filename='image/3.jpg') }}" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+>>>>>>> dd81285ce7fef33140015de573bca64253c33d47
 </div>
 {% endblock %}

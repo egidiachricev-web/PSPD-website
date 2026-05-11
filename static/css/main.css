@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
     --primary: #2c3e50;
     --accent: #d4a373;
@@ -24,3 +25,149 @@ body { margin: 0; font-family: 'Georgia', serif; background-color: var(--light);
 
 .card-college { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .card-image img { width: 100%; height: auto; display: block; }
+=======
+/* --- 1. GLOBAL VARIABLES & RESET --- */
+:root {
+    --primary: #2c3e50;    /* Navy Tua MOMA */
+    --accent: #d4a373;     /* Emas/Krem Museum */
+    --light: #E0DEDE;      /* Krem Lembut */
+    --bg-body: #fdfdfd; 
+    --white: #ffffff;
+    --text-dark: #333;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    background-color: var(--bg-body);
+    color: var(--text-dark);
+}
+
+/* --- 2. NAVBAR KAPSUL (FIXED) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    margin: 20px auto;
+    max-width: 1100px;
+    background-color: var(--primary);
+    border-radius: 50px;
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.navbar .logo {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.nav-links a, .login-link {
+    text-decoration: none;
+    color: var(--light);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.search-container input {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    outline: none;
+    width: 130px;
+}
+
+.nav-auth {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+    align-items: center;
+}
+
+.user-greet { color: white; font-size: 0.8rem; }
+
+.btn-register {
+    background-color: #005088;
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* --- 3. COMPONENTS (INDEX, ART, ABOUT) --- */
+.container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+/* Index Cards */
+.container-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+.container-info .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; flex: 1; min-width: 250px; max-width: 300px; }
+.container-info .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
+
+/* Art Archive Grid */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+.card-college { background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; }
+.card-image img { width: 100%; height: 220px; object-fit: cover; }
+.card-content { padding: 20px; }
+
+/* About Stats */
+.stat-number { font-size: 4rem; color: var(--accent); margin: 0; line-height: 1; }
+.stat-label { text-transform: uppercase; font-weight: bold; letter-spacing: 2px; font-size: 0.8rem; }
+
+/* --- 4. FORMS (ADD & UPDATE) --- */
+.form-wrapper {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 0.9rem; }
+.form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-family: inherit; }
+
+.btn-add {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-cancel { text-decoration: none; color: #888; font-size: 0.9rem; margin-left: 15px; }
+>>>>>>> dd81285ce7fef33140015de573bca64253c33d47

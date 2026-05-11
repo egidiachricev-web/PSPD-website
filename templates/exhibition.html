@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+<<<<<<< HEAD
 {% block content %}
 <section class="container">
     <h1 class="about-title">EXHIBITIONS</h1>
@@ -33,4 +34,77 @@
         </div>
     </div>
 </section>
+=======
+{% block breadcrumbs %}
+    <span style="margin: 0 10px; color: #ccc;">/</span>
+    <span style="color: #888; font-style: italic;">Exhibitions</span>
+{% endblock %}
+
+{% block body %}
+<div class="exhibition-container" style="padding: 40px 5%; max-width: 1200px; margin: 0 auto;">
+    
+    <header style="text-align: center; margin-bottom: 100px;">
+        <h1 style="font-family: 'Georgia', serif; font-weight: 300; letter-spacing: 12px; text-transform: uppercase; color: #333; font-size: 2rem;">
+            Current Exhibitions
+        </h1>
+        <p style="font-size: 0.9rem; color: #666; margin-top: 15px; letter-spacing: 2px;">Explore the latest curation of modern masterpieces</p>
+    </header>
+
+    <div style="display: flex; flex-direction: column; gap: 120px;">
+
+        <section style="display: flex; gap: 60px; align-items: flex-start; position: relative;">
+            
+            <div style="flex: 1; margin-top: 50px;">
+                <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; font-weight: 300; color: #2c3e50; text-transform: lowercase; letter-spacing: 5px;">
+                    Modern Visions
+                </h2>
+                <p style="font-size: 0.8rem; color: #d4a373; text-transform: uppercase; letter-spacing: 3px; margin: 5px 0 20px 0;">
+                    June 15 – October 30, 2024
+                </p>
+                <p style="font-size: 0.95rem; line-height: 1.8; color: #555; text-align: justify;">
+                    Explore a curation of masterworks defining the modern era. From Impressionism's light to Pop Art's icons, this exhibition bridges centuries of creativity, featuring works by Monet, Lichtenstein, and more.
+                </p>
+                <a href="#" style="display: inline-block; margin-top: 30px; text-decoration: none; color: #d4a373; font-family: 'Georgia', serif; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; border-bottom: 1px solid #d4a373; padding-bottom: 5px;">
+                    Learn More →
+                </a>
+            </div>
+
+            <div style="flex: 1.2; position: relative; height: 400px;">
+                <img src="{{ url_for('static', filename='image/MOMAIMG.jpg') }}" 
+                     style="width: 70%; height: 350px; object-fit: cover; border-radius: 4px; opacity: 0.4; position: absolute; left: 0; top: 0;">
+                
+                <img src="{{ url_for('static', filename='image/1.jpg') }}" 
+                     style="width: 70%; height: 350px; object-fit: cover; border-radius: 4px; border: 15px solid #fff; box-shadow: 10px 10px 0px #d4a373; position: absolute; right: 0; bottom: 0; z-index: 2;">
+            </div>
+        </section>
+
+        <section style="display: flex; flex-direction: row-reverse; gap: 60px; align-items: flex-start; position: relative;">
+            
+            <div style="flex: 1; margin-top: 50px;">
+                <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; font-weight: 300; color: #2c3e50; text-transform: lowercase; letter-spacing: 5px;">
+                    Emerging Visionaries
+                </h2>
+                <p style="font-size: 0.8rem; color: #d4a373; text-transform: uppercase; letter-spacing: 3px; margin: 5px 0 20px 0;">
+                    Permanent Collection
+                </p>
+                <p style="font-size: 0.95rem; line-height: 1.8; color: #555; text-align: justify;">
+                    Discover the next generation of artists redefining contemporary visual culture. This collection features works by Kevorkian, Adams, and other new voices in the art world, exploring new media and concepts.
+                </p>
+                <a href="#" style="display: inline-block; margin-top: 30px; text-decoration: none; color: #d4a373; font-family: 'Georgia', serif; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; border-bottom: 1px solid #d4a373; padding-bottom: 5px;">
+                    Learn More →
+                </a>
+            </div>
+
+            <div style="flex: 1.2; position: relative; height: 400px;">
+                <img src="{{ url_for('static', filename='image/2.jpg') }}" 
+                     style="width: 70%; height: 350px; object-fit: cover; border-radius: 4px; opacity: 0.4; position: absolute; right: 0; top: 0;">
+                
+                <img src="{{ url_for('static', filename='image/3.jpg') }}" 
+                     style="width: 70%; height: 350px; object-fit: cover; border-radius: 4px; border: 15px solid #fff; box-shadow: 10px 10px 0px #2c3e50; position: absolute; left: 0; bottom: 0; z-index: 2;">
+            </div>
+        </section>
+
+    </div>
+</div>
+>>>>>>> dd81285ce7fef33140015de573bca64253c33d47
 {% endblock %}
