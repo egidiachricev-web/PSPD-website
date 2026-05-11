@@ -3,38 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/main.css') }}">
-    {% block head %} {% endblock %}
+    <title>MoMA - Museum of Modern Art</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block head %}{% endblock %}
 </head>
 <body>
-   
-    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
-    <!-- Kelompok Kiri: Menu Utama (Hapus 'Login' dari sini) -->
-    <ul style="display: flex; list-style: none; margin: 0; padding: 0; gap: 20px;">
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('about') }}">About</a></li>
-        <li><a href="{{ url_for('art') }}">Art</a></li>
-        <li><a href="#">Exhibition</a></li>
-        <li><a href="#">Visiting Info</a></li>
-        
-        <div class="nav-search">
-            <input type="text" placeholder="Search artwork...">
+    <nav class="navbar">
+        <div class="nav-left">
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('art') }}">Art</a></li>
+                <li><a href="{{ url_for('exhibition') }}">Exhibition</a></li>
+                <li><a href="{{ url_for('visiting') }}">Visiting Info</a></li>
+            </ul>
         </div>
-    </ul>
+        <div class="auth-buttons">
+            {% if current_user.is_authenticated %}
+                <span class="user-greet">Hi, {{ current_user.username }}</span>
+                <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="login-link">Login</a>
+                <a href="{{ url_for('register') }}" class="btn-register">Register</a>
+            {% endif %}
+        </div>
+    </nav>
 
-    <!-- Kelompok Kanan: Login & Register saja -->
-    <ul style="display: flex; list-style: none; margin: 0; padding: 0; gap: 15px; align-items: center;">
-        {% if current_user.is_authenticated %}
-            <li style="color: #555; font-size: 0.9em;">Hi, {{ current_user.username }}</li>
-            <li><a href="{{ url_for('logout') }}" style="color: #d9534f; text-decoration: none; font-size: 0.9em;">Logout</a></li>
-        {% else %}
-            <li><a href="{{ url_for('login') }}" style="text-decoration: none; font-weight: bold; color: #005088;">Login</a></li>
-            <li><a href="{{ url_for('register') }}" style="background: #005088; color: white; padding: 6px 15px; border-radius: 20px; text-decoration: none; font-size: 0.9em;">Register</a></li>
-        {% endif %}
-    </ul>
-</nav>
-
-    {% block body %} {% endblock %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 </body>
-
 </html>

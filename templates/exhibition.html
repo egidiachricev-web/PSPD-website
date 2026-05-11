@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container">
+    <h1 class="about-title">EXHIBITIONS</h1>
+    <p style="text-align: center; color: #666; margin-bottom: 40px;">Current and Upcoming Shows at MoMA</p>
+
+    <div class="exhibition-list">
+        <div class="exhibit-item">
+            <div class="exhibit-img">
+                <img src="{{ url_for('static', filename='image/exhibit1.jpg') }}" alt="Exhibition Name">
+                <span class="status-tag">Now Showing</span>
+            </div>
+            <div class="exhibit-details">
+                <span class="date-range">May 10 – Sept 30, 2026</span>
+                <h2>Surrealism Beyond Borders</h2>
+                <p>Exploring the expansive reach of Surrealism across geographies and decades, showing how artists globally shared ideas of freedom and the unconscious.</p>
+                <a href="#" class="read-more-btn">Explore Exhibition</a>
+            </div>
+        </div>
+
+        <div class="exhibit-item reverse">
+            <div class="exhibit-img">
+                <img src="{{ url_for('static', filename='image/exhibit2.jpg') }}" alt="Exhibition Name">
+                <span class="status-tag upcoming">Coming Soon</span>
+            </div>
+            <div class="exhibit-details">
+                <span class="date-range">Oct 15 – Dec 20, 2026</span>
+                <h2>Abstract Expressionism</h2>
+                <p>A deep dive into the mid-century movement that shifted the art world's focus to New York, featuring works by Pollock, Rothko, and de Kooning.</p>
+                <a href="#" class="read-more-btn">Set Reminder</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,86 +1,55 @@
 {% extends "base.html" %}
 
-{% block body %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+{% block content %}
 <div class="breadcrumbs">
-    <a href="/">Home</a> 
-    <a href="/art">About </a>
-    <a href="/art">Art </a>
-    <a href="/art">Exhibition </a>
-     <a href="/art">Visiting Info </a>
+    <a href="/">Home</a> / <span>Art Archive</span>
 </div>
+
 <header>
     <h1>Arsip Museum</h1>
-    <p style="text-align: center; max-width: 600px; margin: 15px auto; padding: 12px 20px; background-color: white; border: 1px solid #e0dcd5; border-radius: 20px; color: #555; font-style: italic;">
-        Sneak peek into our art collection!
-    </p>
+    <p class="subtitle-italic">Sneak peek into our art collection!</p>
 </header>
 
 <main class="container">
-    <div class="search-container">
-        <input type="text" id="searchArt" placeholder="Cari karya seni..." onkeyup="searchArt()">
+    <div class="search-container" style="text-align: center; margin-bottom: 30px;">
+        <input type="text" id="searchArt" placeholder="Cari karya seni..." onkeyup="searchArt()" 
+               style="width: 100%; max-width: 400px; padding: 12px; border-radius: 25px; border: 1px solid #ccc;">
     </div>
-    <div class="grid">
+
+    <div class="grid" id="artGrid">
         {% for art in all_art %}
         <div class="card-college">
             <div class="card-image">
                 <img src="{{ url_for('static', filename='image/' + art.id|string + '.jpg') }}" alt="{{ art.name }}">
             </div>
             <div class="card-content">
-                <span class="category">{{ art.artist.name }}</span>
+                <span class="category" style="color: var(--accent); font-weight: bold;">{{ art.artist.name }}</span>
                 <h3>{{ art.name }}</h3>
-                <p style="font-size: 0.9em; color: #666;">{{ art.description }}</p>
+                <p>{{ art.description }}</p>
                 
-                <div class="actions" style="margin-top: 10px;">
+                <div class="actions">
                     <a href="{{ url_for('update_art', id=art.id) }}" class="btn-detail" style="background-color: #f0ad4e;">Edit</a>
                     <a href="{{ url_for('delete_art', id=art.id) }}" class="btn-detail" style="background-color: #d9534f;" onclick="return confirm('Yakin mau hapus?')">Hapus</a>
                 </div>
-
-                <div class="comment-section" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
-                    <h6>Reviews:</h6>
-                    <ul style="list-style: none; padding: 0; font-size: 0.85em;">
-                        {% for comment in art.comments %}
-                            <li style="background: #f9f9f9; padding: 8px; border-radius: 5px; margin-bottom: 5px;">
-                                "{{ comment.content }}" <br>
-                                <small style="color: #888;">{{ comment.timestamp.strftime('%d %b %Y') }}</small>
-                            </li>
-                        {% else %}
-                            <li style="color: #aaa; font-style: italic;">Belum ada review.</li>
-                        {% endfor %}
-                    </ul>
-
-                    <form action="{{ url_for('add_comment', art_id=art.id) }}" method="POST" style="margin-top: 10px; display: flex; gap: 5px;">
-                        <input type="text" name="content" placeholder="Tulis review..." required 
-                               style="flex-grow: 1; padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
-                        <button type="submit" style="padding: 5px 10px; cursor: pointer; background: #005088; color: white; border: none; border-radius: 4px;">Kirim</button>
-                    </form>
-                </div>
-                </div>
+            </div>
         </div>
-        {% else %}
-        <p>Nothing Here. Click "Add New Art" to add some!</p>
         {% endfor %}
     </div>
 
-    <div style="margin-top: 40px; text-align: center;">
-        <a href="/add-art" class="btn-add">Add New Art</a>
+    <div style="text-align: center; margin-top: 50px;">
+        <a href="/add-art" class="btn-add">+ Add New Art</a>
     </div>
 </main>
+
 <script>
-    function searchArt() {
-        let input = document.getElementById("searchArt").value.toLowerCase();
-        let cards = document.querySelectorAll(".card");
-    
-        cards.forEach(function(card) {
-            let title = card.querySelector("h3").innerText.toLowerCase();
-    
-            if (title.includes(input)) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    }
-    </script>
+function searchArt() {
+    let input = document.getElementById("searchArt").value.toLowerCase();
+    let cards = document.querySelectorAll(".card-college");
+
+    cards.forEach(card => {
+        let title = card.querySelector("h3").innerText.toLowerCase();
+        card.style.display = title.includes(input) ? "flex" : "none";
+    });
+}
+</script>
 {% endblock %}

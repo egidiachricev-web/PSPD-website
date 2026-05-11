@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="visiting-section">
+    <div class="header-center">
+        <h1 class="about-title">PLAN YOUR VISIT</h1>
+        <span class="location-sub">Experience Modern Art in the Heart of New York</span>
+    </div>
+
+    <div class="visiting-grid">
+        <div class="visit-card">
+            <div class="visit-icon">⏰</div>
+            <h3>Hours</h3>
+            <ul class="visit-list">
+                <li><strong>Mon - Fri:</strong> 10:30 AM – 5:30 PM</li>
+                <li><strong>Saturday:</strong> 10:30 AM – 7:00 PM</li>
+                <li><strong>Sunday:</strong> 10:30 AM – 5:30 PM</li>
+            </ul>
+        </div>
+
+        <div class="visit-card">
+            <div class="visit-icon">🎟️</div>
+            <h3>Admission</h3>
+            <ul class="visit-list">
+                <li><strong>Adults:</strong> $25</li>
+                <li><strong>Seniors (65+):</strong> $18</li>
+                <li><strong>Students:</strong> $14</li>
+                <li><strong>Children (<16):</strong> Free</li>
+            </ul>
+        </div>
+
+        <div class="visit-card">
+            <div class="visit-icon">📍</div>
+            <h3>Location</h3>
+            <p>11 West 53 Street, New York, NY 10019</p>
+            <p class="small-text">Entrance is through the main lobby on 53rd Street.</p>
+        </div>
+    </div>
+
+    <div class="visit-info-box">
+        <h3>📢 Tips for Visitors</h3>
+        <div class="tips-grid">
+            <p>• Tickets must be booked online in advance.</p>
+            <p>• Last entry is 45 minutes before closing.</p>
+            <p>• Photography is allowed (no flash or tripods).</p>
+            <p>• Free Wi-Fi is available throughout the museum.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
