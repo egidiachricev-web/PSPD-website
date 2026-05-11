@@ -137,21 +137,4 @@ def login():
 def register():
     return "Sign in Here"
 
-<<<<<<< HEAD
-@app.route('/exhibition') # Kamu bisa ganti routenya juga jadi /exhibition
-def exhibition(): # Nama fungsi ini harus sinkron dengan url_for di HTML
-    return render_template('exhibition.html') # Pastikan file html-nya ada
-
-@app.route('/visiting')  # Alamat URL-nya
-def visiting():          # Nama fungsi (endpoint) ini yang dicari url_for('visiting')
-    return render_template('visiting.html')
-
-if __name__ == '__main__':
-=======
-@app.route('/exhibition')
-def exhibition():
-    return render_template('exhibition.html')
-
-if __name__ == "__main__":
->>>>>>> dd81285ce7fef33140015de573bca64253c33d47
     app.run(debug=True)
