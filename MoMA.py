@@ -137,5 +137,9 @@ def login():
 def register():
     return "Sign in Here"
 
+@app.route('/exhibition')
+def exhibition():
+    return render_template('exhibition.html')
+
 if __name__ == "__main__":
     app.run(debug=True)

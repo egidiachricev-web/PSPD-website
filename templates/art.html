@@ -1,41 +1,50 @@
 {% extends "base.html" %}
 
+{% block breadcrumbs %}
+    <span style="margin: 0 10px; color: #ccc;">/</span>
+    <span style="color: #888; font-style: italic;">Art Archive</span>
+{% endblock %}
 {% block body %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+ 
+<div class="breadcrumbs" style="text-align: center; margin: 20px auto; padding: 10px 0; max-width: 1100px;">
 
-<div class="breadcrumbs">
-    <a href="/">Home</a> 
-    <a href="/art">About </a>
-    <a href="/art">Art </a>
-    <a href="/art">Exhibition </a>
-     <a href="/art">Visiting Info </a>
 </div>
-<header>
-    <h1>Arsip Museum</h1>
-    <p style="text-align: center; max-width: 600px; margin: 15px auto; padding: 12px 20px; background-color: white; border: 1px solid #e0dcd5; border-radius: 20px; color: #555; font-style: italic;">
-        Sneak peek into our art collection!
-    </p>
+<header style="margin-top: 50px; margin-bottom: 30px;">
+    <h1 style="
+        text-align: center; 
+        font-family: 'Georgia', serif; 
+        font-weight: 300; 
+        letter-spacing: 10px; 
+        text-transform: uppercase; 
+        color: #2c3e50; 
+        font-size: 2.2rem;
+    ">
+        Arsip Museum
+    </h1>
 </header>
 
 <main class="container">
-    <div class="search-container">
-        <input type="text" id="searchArt" placeholder="Cari karya seni..." onkeyup="searchArt()">
-    </div>
     <div class="grid">
         {% for art in all_art %}
         <div class="card-college">
             <div class="card-image">
-                <img src="{{ url_for('static', filename='image/' + art.id|string + '.jpg') }}" alt="{{ art.name }}">
+               <img src="{{ url_for('static', filename='image/' + art.id|string + '.jpg') }}" 
+               alt="{{ art.name }}" 
+               style="width: 100%; height: 200px; object-fit: cover; display: block;">
             </div>
             <div class="card-content">
                 <span class="category">{{ art.artist.name }}</span>
                 <h3>{{ art.name }}</h3>
                 <p style="font-size: 0.9em; color: #666;">{{ art.description }}</p>
                 
-                <div class="actions" style="margin-top: 10px;">
-                    <a href="{{ url_for('update_art', id=art.id) }}" class="btn-detail" style="background-color: #f0ad4e;">Edit</a>
-                    <a href="{{ url_for('delete_art', id=art.id) }}" class="btn-detail" style="background-color: #d9534f;" onclick="return confirm('Yakin mau hapus?')">Hapus</a>
-                </div>
+                <div class="actions" style="margin-top: 15px; display: flex; gap: 10px;">
+                    <a href="{{ url_for('update_art', id=art.id) }}" style="background-color: #f0ad4e; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-size: 0.85em; font-weight: bold; display: inline-block;">Edit 
+
+                    </a>
+                <a href="{{ url_for('delete_art', id=art.id) }}" 
+                style="background-color: #d9534f; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-size: 0.85em; font-weight: bold; display: inline-block;" 
+                onclick="return confirm('Yakin mau hapus?')">Hapus</a>
+            </div>
 
                 <div class="comment-section" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
                     <h6>Reviews:</h6>
@@ -63,14 +72,21 @@
         {% endfor %}
     </div>
 
-    <div style="margin-top: 40px; text-align: center;">
-        <a href="/add-art" class="btn-add">Add New Art</a>
+    <div style="margin: 60px 0; text-align: center;">
+        <a href="{{ url_for('add_art') }}" 
+           style="border: 1px solid #d4a373; color: #d4a373; padding: 12px 35px; text-decoration: none; font-family: 'Georgia', serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; transition: 0.3s; display: inline-block;"
+           onmouseover="this.style.backgroundColor='#d4a373'; this.style.color='white';" 
+           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#d4a373';">
+           Add New Artwork
+        </a>
     </div>
+    </a>
+</div>
 </main>
 <script>
     function searchArt() {
         let input = document.getElementById("searchArt").value.toLowerCase();
-        let cards = document.querySelectorAll(".card");
+        let cards = document.querySelectorAll(".card-college");
     
         cards.forEach(function(card) {
             let title = card.querySelector("h3").innerText.toLowerCase();
