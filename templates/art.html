@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block breadcrumbs %}
-    <span style="margin: 0 10px; color: #ccc;">/</span>
-    <span style="color: #888; font-style: italic;">Art Archive</span>
+<span style="margin: 0 10px; color: #ccc;">/</span>
+<span style="color: #888; font-style: italic;">Art Archive</span>
 {% endblock %}
 {% block body %}
- 
+
 <div class="breadcrumbs" style="text-align: center; margin: 20px auto; padding: 10px 0; max-width: 1100px;">
 
 </div>
@@ -21,12 +21,14 @@
     ">
         Arsip Museum
     </h1>
-    <p style="text-align: center; color: #888; font-style: italic; font-family: 'Georgia', serif; margin-bottom: 50px;">Sneak peek into our art collection!
+    <p style="text-align: center; color: #888; font-style: italic; font-family: 'Georgia', serif; margin-bottom: 50px;">
+        Sneak peek into our art collection!
     </p>
 </header>
 
 <main class="container">
     <div class="grid">
+        
         {% for art in all_art %}
         <div class="card-college">
             <div class="card-image">
@@ -34,19 +36,18 @@
                alt="{{ art.name }}" 
                style="width: 100%; height: 200px; object-fit: cover; display: block;">
             </div>
+            
             <div class="card-content">
                 <span class="category">{{ art.artist.name }}</span>
                 <h3>{{ art.name }}</h3>
                 <p style="font-size: 0.9em; color: #666;">{{ art.description }}</p>
                 
                 <div class="actions" style="margin-top: 15px; display: flex; gap: 10px;">
-                    <a href="{{ url_for('update_art', id=art.id) }}" style="background-color: #f0ad4e; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-size: 0.85em; font-weight: bold; display: inline-block;">Edit 
-
-                    </a>
-                <a href="{{ url_for('delete_art', id=art.id) }}" 
-                style="background-color: #d9534f; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-size: 0.85em; font-weight: bold; display: inline-block;" 
-                onclick="return confirm('Yakin mau hapus?')">Hapus</a>
-            </div>
+                    {% if current_user.is_authenticated and current_user.role == 'admin' %}
+                        <a href="{{ url_for('update_art', id=art.id) }}" style="background-color: #f0ad4e; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-size: 0.85em; font-weight: bold; display: inline-block;">Edit</a>
+                        <a href="{{ url_for('delete_art', id=art.id) }}" style="background-color: #d9534f; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-size: 0.85em; font-weight: bold; display: inline-block;" onclick="return confirm('Yakin mau hapus?')">Hapus</a>
+                    {% endif %}
+                </div>
 
                 <div class="comment-section" style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
                     <h6>Reviews:</h6>
@@ -61,38 +62,47 @@
                         {% endfor %}
                     </ul>
 
-                    <form action="{{ url_for('add_comment', art_id=art.id) }}" method="POST" style="margin-top: 10px; display: flex; gap: 5px;">
-                        <input type="text" name="content" placeholder="Tulis review..." required 
-                               style="flex-grow: 1; padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
-                        <button type="submit" style="padding: 5px 10px; cursor: pointer; background: #005088; color: white; border: none; border-radius: 4px;">Kirim</button>
-                    </form>
+                    {% if current_user.is_authenticated %}
+                        <form action="{{ url_for('add_comment', art_id=art.id) }}" method="POST" style="margin-top: 10px; display: flex; gap: 5px;">
+                            <input type="text" name="content" placeholder="Tulis review..." required 
+                                   style="flex-grow: 1; padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
+                            <button type="submit" style="padding: 5px 10px; cursor: pointer; background: #005088; color: white; border: none; border-radius: 4px;">Kirim</button>
+                        </form>
+                    {% else %}
+                        <p style="font-size: 0.8em; color: #888; margin-top: 10px;">
+                            <a href="{{ url_for('login') }}" style="color: #005088; font-weight: bold; text-decoration: none;">Login</a> untuk menambahkan review.
+                        </p>
+                    {% endif %}
                 </div>
-                </div>
+            </div>
         </div>
+        
         {% else %}
         <p>Nothing Here. Click "Add New Art" to add some!</p>
+        
         {% endfor %}
+        
     </div>
 
-    <div style="margin: 60px 0; text-align: center;">
-        <a href="{{ url_for('add_art') }}" 
-           style="border: 1px solid #d4a373; color: #d4a373; padding: 12px 35px; text-decoration: none; font-family: 'Georgia', serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; transition: 0.3s; display: inline-block;"
-           onmouseover="this.style.backgroundColor='#d4a373'; this.style.color='white';" 
-           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#d4a373';">
-           Add New Artwork
-        </a>
-    </div>
-    </a>
-</div>
+    {% if current_user.is_authenticated and current_user.role == 'admin' %}
+        <div style="margin: 60px 0; text-align: center;">
+            <a href="{{ url_for('add_art') }}" 
+               style="border: 1px solid #d4a373; color: #d4a373; padding: 12px 35px; text-decoration: none; font-family: 'Georgia', serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; transition: 0.3s; display: inline-block;"
+               onmouseover="this.style.backgroundColor='#d4a373'; this.style.color='white';" 
+               onmouseout="this.style.backgroundColor='transparent'; this.style.color='#d4a373';">
+               Add New Artwork
+            </a>
+        </div>
+    {% endif %}
 </main>
 <script>
     function searchArt() {
         let input = document.getElementById("searchArt").value.toLowerCase();
         let cards = document.querySelectorAll(".card-college");
-    
-        cards.forEach(function(card) {
+
+        cards.forEach(function (card) {
             let title = card.querySelector("h3").innerText.toLowerCase();
-    
+
             if (title.includes(input)) {
                 card.style.display = "block";
             } else {
@@ -100,5 +110,5 @@
             }
         });
     }
-    </script>
+</script>
 {% endblock %}
